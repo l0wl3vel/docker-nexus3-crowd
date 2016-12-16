@@ -15,7 +15,10 @@ RUN yum install -y git && \
     echo -e 'mvn\:com.pingunaut.nexus/nexus3-crowd-plugin/3.2.0 = 200' >> /opt/sonatype/nexus/etc/karaf/startup.properties && \
     yum remove -y git && \
     yum remove -y apache-maven && \
-    rm /etc/yum.repos.d/epel-apache-maven.repo
+    rm /etc/yum.repos.d/epel-apache-maven.repo && \
+    touch /opt/sonatype/nexus/etc/crowd.properties && \
+    chown nexus /opt/sonatype/nexus/etc/crowd.properties && \
+    chmod u+w /opt/sonatype/nexus/etc/crowd.properties
 
 USER nexus
 
