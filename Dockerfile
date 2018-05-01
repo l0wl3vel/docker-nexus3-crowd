@@ -3,7 +3,7 @@ MAINTAINER Dwolla Dev <dev+docker-nexus3-crowd@dwolla.com>
 LABEL org.label-schema.vcs-url="https://github.com/Dwolla/docker-nexus3-crowd"
 
 USER root
-
+COPY startup.sh /
 RUN yum install -y git && \
     curl -o /etc/yum.repos.d/epel-apache-maven.repo https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo && \
     yum install -y apache-maven && \
@@ -22,5 +22,4 @@ RUN yum install -y git && \
 
 USER nexus
 
-CMD echo -e "crowd.server.url=$CROWD_URL\napplication.name=$CROWD_USER\napplication.password=$CROWD_PASSWORD\ncache.authentication=$CROWD_CACHE_AUTHENTICATION" > /opt/sonatype/nexus/etc/crowd.properties && \
-    bin/nexus run
+CMD ["/startup.sh"]
