@@ -1,4 +1,4 @@
-FROM sonatype/nexus3:3.10.0
+FROM sonatype/nexus3:3.13.0
 MAINTAINER Dwolla Dev <dev+docker-nexus3-crowd@dwolla.com>
 LABEL org.label-schema.vcs-url="https://github.com/Dwolla/docker-nexus3-crowd"
 
@@ -9,10 +9,10 @@ RUN yum install -y git && \
     yum install -y apache-maven && \
     git clone https://github.com/pingunaut/nexus3-crowd-plugin.git && \
     cd nexus3-crowd-plugin && \
-    git checkout tags/nexus3-crowd-plugin-3.3.0 && \
+    git checkout tags/nexus3-crowd-plugin-3.5.0 && \
     mvn install && \
     cp -ra ~/.m2/repository/com/pingunaut /opt/sonatype/nexus/system/com && \
-    echo -e 'mvn\:com.pingunaut.nexus/nexus3-crowd-plugin/3.3.0 = 200' >> /opt/sonatype/nexus/etc/karaf/startup.properties && \
+    echo -e 'mvn\:com.pingunaut.nexus/nexus3-crowd-plugin/3.5.0 = 200' >> /opt/sonatype/nexus/etc/karaf/startup.properties && \
     yum remove -y git && \
     yum remove -y apache-maven && \
     rm /etc/yum.repos.d/epel-apache-maven.repo && \
