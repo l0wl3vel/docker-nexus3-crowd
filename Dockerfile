@@ -1,10 +1,10 @@
-FROM sonatype/nexus3:3.14.0
+FROM sonatype/nexus3:3.15.2
 MAINTAINER Dwolla Dev <dev+docker-nexus3-crowd@dwolla.com>
 LABEL org.label-schema.vcs-url="https://github.com/Dwolla/docker-nexus3-crowd"
 
 USER root
 COPY startup.sh /
-RUN yum install -y git && \
+RUN yum install -y git which && \
     curl -o /etc/yum.repos.d/epel-apache-maven.repo https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo && \
     yum install -y apache-maven && \
     git clone https://github.com/pingunaut/nexus3-crowd-plugin.git && \
