@@ -1,4 +1,4 @@
-FROM sonatype/nexus3:3.22.0
+FROM sonatype/nexus3:3.22.1
 LABEL maintainer Dwolla Dev <dev+docker-nexus3-crowd@dwolla.com>
 LABEL org.label-schema.vcs-url="https://github.com/Dwolla/docker-nexus3-crowd"
 
